@@ -1,0 +1,1 @@
+Package for log-linear analysis of incomplete data, including multiple systems estimation, latent classes and missing value imputation. Optionally, regularization with a ridge penalty can be applied. 
