@@ -256,7 +256,7 @@ bootmse <- function(object, B = 500, lambda = 0, cores = 2, seed = NULL, control
   if (!exists("lat", object) & !any(is.na(object$dobs))) {
     
     bootres <- foreach(i = 1:B, .combine = cbind, .inorder = F,
-                       .errorhandling = "remove", .packages = "MSEimpute") %dopar% {
+                       .errorhandling = "remove", .packages = "MSEincomplete") %dopar% {
                          bootcomp(object = object, lambda = lambda, control = control)
                        }
     
@@ -267,7 +267,7 @@ bootmse <- function(object, B = 500, lambda = 0, cores = 2, seed = NULL, control
   } else if (exists("lat", object) & !any(is.na(object$dobs))) {
     
     bootres <- foreach(i = 1:B, .combine = cbind, .inorder = F, 
-                       .errorhandling = "remove", .packages = "MSEimpute") %dopar% {
+                       .errorhandling = "remove", .packages = "MSEincomplete") %dopar% {
                          bootlca(object = object, lambda = lambda, control = control)
                        }
     bootfits <- bootres[which(rownames(bootres) == 1):nrow(bootres), ]
@@ -278,7 +278,7 @@ bootmse <- function(object, B = 500, lambda = 0, cores = 2, seed = NULL, control
   } else if (!exists("lat", object) & any(is.na(object$dobs))) {
     
     bootres <- foreach(i = 1:B, .combine = cbind, .inorder = F, 
-                       .errorhandling = "remove", .packages = "MSEimpute") %dopar% {
+                       .errorhandling = "remove", .packages = "MSEincomplete") %dopar% {
                          bootimp(object = object, lambda = lambda, control = control)
                        } 
     
@@ -290,7 +290,7 @@ bootmse <- function(object, B = 500, lambda = 0, cores = 2, seed = NULL, control
   } else if (exists("lat", object) & any(is.na(object$dobs))) {
     
     bootres <- foreach(i = 1:B, .combine = cbind, .inorder = F, 
-                       .errorhandling = "remove", .packages = "MSEimpute") %dopar% {
+                       .errorhandling = "remove", .packages = "MSEincomplete") %dopar% {
                          bootimplca(object = object, lambda = lambda, control = control)
                        }
     bootfits <- bootres[which(rownames(bootres) == 1):nrow(bootres), ]
