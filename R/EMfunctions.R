@@ -422,7 +422,7 @@ lca2 <- function(formula, d0, latlevs, lambda, stderr, maxit, tol, mtol,
   
   dev  <- 2 * sum(xcomp * log(xcomp / mu ), na.rm = T)
   npar <- ncol(D)
-  df   <- nrow(d0) - npar
+  df   <- nrow(dy) - npar
   AIC  <- 2 * (npar - LL)
   BIC  <- npar * log(n) - 2 * LL
   
@@ -784,3 +784,4 @@ imp2lca <- function(formula, d0, latlevs, lambda, stderr, maxit, tol, mtol,
                  hist    = hist))
   
 }
+
